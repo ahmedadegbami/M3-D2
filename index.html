@@ -34,17 +34,23 @@
       crossorigin="anonymous"
     ></script>
     <script>
-      fetch(
-        "https://striveschool-api.herokuapp.com/api/deezer/search?q=eminem",
-        { method: "GET" }
-      )
+      const options = {
+        method: "GET",
+        headers: {
+          "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
+          "X-RapidAPI-Key":
+            "fab7d0a659msh7fdcddc2c262f33p1b8c18jsnef9a6f37e3b7",
+        },
+      };
+
+      fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem", options)
         .then((response) => response.json())
         .then((songs) => {
           console.log(songs);
           let albums = songs.data;
 
           for (let i = 0; i < albums.length; i++) {
-            let album = albums[i];
+            let albumsnumber = albums[i];
             let row = document.querySelector(".row");
 
             let col = document.createElement("div");
@@ -52,9 +58,9 @@
             col.classList.add("col-sm-3");
 
             col.innerHTML = `<div class="card">
-                <img src=${album.album.cover} class="card-img-top" alt="...">
+                <img src=${albumsnumber.album.cover} class="card-img-top" alt="...">
                 <div class="card-body">
-                <h5 class="card-title">${album.title}</h5>
+                <h5 class="card-title">${albumsnumber.title}</h5>
                 
                 </div>
                 </div>`;
