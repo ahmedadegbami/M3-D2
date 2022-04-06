@@ -43,9 +43,10 @@
           console.log(songs);
           let albums = songs.data;
 
+          let row = document.querySelector(".row");
+
           for (let i = 0; i < albums.length; i++) {
             let albumsnumber = albums[i];
-            let row = document.querySelector(".row");
 
             let col = document.createElement("div");
 
